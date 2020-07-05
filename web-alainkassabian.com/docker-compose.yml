@@ -1,0 +1,40 @@
+version: "3.1"
+services:
+  wordpress:
+    image: wordpress:php7.2
+    container_name: web-alainkassabian.com
+    restart: unless-stopped
+    depends_on:
+      - wordpress_db
+    # ports:
+    #   - 80:80
+    #   - 443:443
+    environment:
+      WORDPRESS_DB_HOST: $WP_DB_HOST
+      WORDPRESS_DB_USER: $WP_DB_USER
+      WORDPRESS_DB_PASSWORD: $WP_DB_PW
+      WORDPRESS_DB_NAME: $WP_DB_NAME
+    volumes:
+      - ./wordpress:/var/www/html
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.akcom.rule=Host(`alainkassabian.com`)"
+      - "traefik.http.routers.akcom.entrypoints=websecure"
+      - "traefik.http.routers.akcom.tls=true"
+      - "traefik.http.routers.akcom.tls.certresolver=letsencrypt"
+
+  wordpress_db:
+    image: mysql:5.7
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: $WP_DB_NAME
+      MYSQL_USER: $WP_DB_USER
+      MYSQL_PASSWORD: $WP_DB_PW
+      MYSQL_RANDOM_ROOT_PASSWORD: "1"
+    volumes:
+      - ./db:/var/lib/mysql
+
+networks:
+  default:
+    external:
+      name: akcom

@@ -1,0 +1,7 @@
+db/
+cache/
+logs/
+wc-logs/
+wflogs/
+upgrade/
+.env

@@ -1,0 +1,47 @@
+version: "3.3"
+services:
+
+  traefik:
+    image: "traefik:v2.2"
+    container_name: "traefik"
+    restart: "unless-stopped"
+    command:
+      - --entrypoints.web.address=:80
+      - --entrypoints.websecure.address=:443
+      - --providers.docker
+      - --api
+      - --certificatesresolvers.letsencrypt.acme.tlschallenge=true
+      - --certificatesresolvers.letsencrypt.acme.caserver=https://acme-v01.api.letsencrypt.org/directory
+      - --certificatesresolvers.letsencrypt.acme.email=$EMAIL
+      - --certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json
+    ports:
+      - 80:80
+      - 443:443
+      - 8080:8080
+    volumes:
+      - ./letsencrypt:/letsencrypt
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    labels:
+      # global redirect to https
+      - traefik.http.routers.http-catchall.rule=hostregexp(`{host:.+}`)
+      - traefik.http.routers.http-catchall.entrypoints=web
+      - traefik.http.routers.http-catchall.middlewares=redirect-to-https
+
+      # middleware redirect
+      - traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https
+
+  # whoami (testing)
+  # whoami:
+  #   image: containous/whoami:v1.3.0
+  #   labels:
+  #     - traefik.http.routers.whoami.rule=Host(`UPDATE_WHO_URL`)
+  #     # - traefik.http.routers.whoami.middlewares=auth
+  #     - traefik.http.routers.whoami.entrypoints=websecure
+  #     - traefik.http.routers.whoami.tls=true
+  #     - traefik.http.routers.whoami.tls.certresolver=letsencrypt
+  #     # - traefik.http.middlewares.auth.basicauth.users=user:$$apr1$$q8eZFHjF$$Fvmkk//V6Btlaf2i/ju5n/ # user/password
+
+networks:
+  default:
+    external:
+      name: akcom
