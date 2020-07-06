@@ -34,6 +34,21 @@ services:
     volumes:
       - ./db:/var/lib/mysql
 
+  #wp_cli:
+    #image: wordpress:cli
+    #restart: 'no'
+    #depends_on:
+      #- wordpress
+      #- wordpress_db
+    # This is required to run wordpress-cli with the same
+    # user-id as wordpress. This way there are no permission problems
+    # when running the cli
+    #user: "xfs"
+    #command: >
+      #/bin/sh -c 'wp db reset --yes && wp db import alainkas_wp194.sql'
+    #volumes:
+      #- ./wordpress:/var/www/html
+
 networks:
   default:
     external:
