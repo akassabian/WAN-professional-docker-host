@@ -1,68 +1,72 @@
 <?php get_header(); ?>
-	
-	<div id="container content-main">
 
-			<div class="section-1-parent">
-				<div class="section-1-child">
-					<div class="row-alain-content">						
-                        <div class="col-12 col-md-10">
-                                <?php
-                                $args = array( 'category' => 6, 'post_type' =>  'post', 'posts_per_page' => -1, 'post_status' => 'publish');
-                                $postslist = get_posts($args);
-                                foreach ($postslist as $post) :
-                                    setup_postdata($post);
-                            ?>
-                                    <h2><a <a class="post-title" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                                    	<a class="sign-up" href="http://alainkassabian.com/?page_id=117">Click Here to Subscribe!</a>
-                                        <?php the_excerpt(); ?>
-                                        <?php endforeach; ?>
-                                <?php
-                                $args = array( 'category' => 4, 'post_type' =>  'post', 'posts_per_page' => -1, 'post_status' => 'publish');
-                                $postslist = get_posts($args);
-                                foreach ($postslist as $post) :
-                                    setup_postdata($post);
-                            ?>
-                                    <h2><a class="post-title" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                                    	<a class="sign-up" href="http://alainkassabian.com/?page_id=117">Click Here to Subscribe!</a>
-                                        <?php the_excerpt(); ?>
-                                        <?php endforeach; ?>
-
-                        </div>	
-						<div class="col-12 col-md-2">
-							
-
-
-<?php     
-// CONVERT TO CATAGORIES RATHER THAN SUB
-   $categories =  get_categories();  
-    foreach  ($categories as $category) if ($tmp++ < 3) {
-        //Display the sub category information using $category values like $category->cat_name
-        echo '<h2 class="toc-headers">'.$category->name.'</h2>';
-        echo '<ul id="toc-items">';
-
-        $args = array( 'category' => $category->term_id, 'post_type' =>  'post', 'posts_per_page' => -1, 'post_status' => 'publish');
-        foreach (get_posts($args) as $post) {
-            setup_postdata( $post );
-            echo '<li><a href="'.get_permalink($post->ID).'">'.get_the_title().'</a></li>';   
-        }  
-        echo '</ul>';
-    }
-     ?>
-
-						</div>						
-					</div>
+	<div class="bg-ajk-dark">	
+		<div class="container content-main">
+			<div class="row row-bio">						
+				<div class="col-xs-12 col-md-6 d-flex bio_pic_col justify-content-center justify-content-lg-end">
+					<img class="display_pic" src="<?php echo get_template_directory_uri(); ?>/images/display_pic_cropped.jpg" width="250px" height="250px">
+				</div>
+				<div class="col-xs-12 col-md-6 d-flex flex-column justify-content-center">
+					<p class="text-center text-md-left">
+						Hello! My name is Alain (AJ).
+						<br>
+						I am a Mississauga based web developer.
+					</p>
 				</div>
 			</div>
+			<div class="row row-bio-2">
+				<div class="col text-justify text-md-left">
+					<p>I grew up in Whitby, Ontario. I'm an autodidactic polymath (self taught on broad range of topics) that gravitates towards technology, art, health, and social systems. I began developing websites professionaly near the end of 2018.</p>
+				</div>
+			</div>
+		</div>
 
-			
-	<script>
-	jQuery(document).ready(function() {
-		revapi = jQuery("#slider-1").revolution({
-			sliderLayout: "fullscreen",
-			gridwidth: 1230,
-			gridheight: 720
-		});
-	});
-	</script>
+	
+		<div class="container topics">
+			<ul class="row row-topics justify-content-center">
+				<li class="col-12 col-md-6 d-flex justify-content-center flex-wrap">
+					<a href="https://registry.jsonresume.org/akassabian" class="topics-container">						
+						<img src="<?php echo get_template_directory_uri(); ?>/images/web-resume.svg">						
+						<div class="topics-overlay text-center d-flex flex-column justify-content-center">
+							<span>View Resume</span>
+						</div>
+					</a>
+					<p>Web</p>
+				</li>
+				<li class="col-12 col-md-6 d-flex justify-content-center flex-wrap">
+					<a href="#" class="topics-container">						
+						<img src="<?php echo get_template_directory_uri(); ?>/images/tech.svg">						
+						<div class="topics-overlay text-center d-flex flex-column justify-content-center">
+							<span>View Blog (Coming Soon)</span>
+						</div>
+					</a>
+					<p>Technology</p>
+				</li>
+				<li class="col-12 col-md-6 d-flex justify-content-center flex-wrap">
+					<a href="#" class="topics-container">						
+						<img src="<?php echo get_template_directory_uri(); ?>/images/health.svg">						
+						<div class="topics-overlay text-center d-flex flex-column justify-content-center">
+							<span>View Blog (Coming Soon)</span>
+						</div>
+					</a>
+					<p>Health</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="bg-ajk-primary">
+		<div class="container">
+			<div class="row row-cta">
+				<div class="col text-center">
+					<h2>Need help on a project?</h2><a href="mailto:alainkassabian@gmail.com" class="ajk-button" style=>Free Consultation</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+		
+
 
 	<?php get_footer();

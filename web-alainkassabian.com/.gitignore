@@ -5,3 +5,4 @@ wc-logs/
 wflogs/
 upgrade/
 .env
+wordpress/wp-config.local.php
