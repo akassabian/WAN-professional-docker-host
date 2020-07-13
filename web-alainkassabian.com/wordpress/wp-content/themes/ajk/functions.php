@@ -2,7 +2,7 @@
 
 function alaink_scripts()
 {
-    wp_enqueue_style('customstyle', get_template_directory_uri() . '/public/css/app.css', array(), '1.0.0', 'all');
+    //wp_enqueue_style('customstyle', get_template_directory_uri() . '/public/css/app.css', array(), '1.0.0', 'all');
     wp_enqueue_script('customjs', get_template_directory_uri() . '/public/js/app.js', array(), '1.0.0', true);
 
 }

@@ -7,9 +7,9 @@
 			<div class="row social-icons">
 				<div class="col d-flex justify-content-center">
 					<ul class="d-flex">
-						<a href="https://github.com/akassabian"><li><img src="<?php echo get_template_directory_uri(); ?>/images/github.svg"></li>
-						<a href="https://www.linkedin.com/in/alain-kassabian/"><li><img src="<?php echo get_template_directory_uri(); ?>/images/linkedin.svg"></li>
-						<a href="mailto:alainkassabian@gmail.com"><li><img class="email-icon" src="<?php echo get_template_directory_uri(); ?>/images/email.svg"></li></a>
+						<li><a href="https://github.com/akassabian"><img alt="GitHub Logo" src="<?php echo get_template_directory_uri(); ?>/images/github.svg"></a></li>
+						<li><a href="https://www.linkedin.com/in/alain-kassabian/"><img alt ="LinkedIn Logo" src="<?php echo get_template_directory_uri(); ?>/images/linkedin.svg"></a></li>
+						<li><a href="mailto:alainkassabian@gmail.com"><img class="email-icon" alt="E-Mail Logo" src="<?php echo get_template_directory_uri(); ?>/images/email.svg"></a></li>
 					</ul>
 				</div>
 			</div>

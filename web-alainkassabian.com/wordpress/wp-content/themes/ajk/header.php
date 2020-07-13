@@ -30,16 +30,14 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto navbar-nav navbar-right">
         <?php wp_nav_menu(array(
                                             'menu'              => 'header-menu',
                                             'theme_location'    => 'Header',
                                             'depth'             => 2,
-                                            'container'         => 'div',
+                                            'container'         => false,
                                             'container_class'   => 'navbar-collapse',
-                                            'menu_class'        => 'nav navbar-nav navbar-right',
+                                            'menu_class'        => 'nav navbar-nav navbar-right mr-auto',
                                             'walker'            => new wp_bootstrap_navwalker(),
                                             'fallback_cb'       => 'wp_bootstrap_navwalker::fallback'));?>
-    </ul>
   </div>
 </nav>
