@@ -46,6 +46,27 @@ function bootstrap_nav()
             'walker'            => new wp_bootstrap_navwalker()));
 }
 
+// REMOVE WP EMOJI
+remove_action('wp_head', 'print_emoji_detection_script', 7);
+remove_action('wp_print_styles', 'print_emoji_styles');
+
+remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+remove_action( 'admin_print_styles', 'print_emoji_styles' );
+
+// Remove wp-embed.min.js
+function dequeue_scripts() {
+  wp_deregister_script( 'wp-embed' );
+}
+add_action( 'wp_enqueue_scripts', 'dequeue_scripts' );
+
+// Register theme support for HTML scipt and style so that type attribute is ommitted for W3 standards/validator
+add_action(
+  'after_setup_theme',
+  function() {
+      add_theme_support( 'html5', [ 'script', 'style' ] );
+  }
+);
+
 /*
 —------------------------------------------------------------
 # BROWSERSYNC
