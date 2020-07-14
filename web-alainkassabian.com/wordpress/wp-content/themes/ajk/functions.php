@@ -1,13 +1,25 @@
 <?php
 
-function alaink_scripts()
-{
-    //wp_enqueue_style('customstyle', get_template_directory_uri() . '/public/css/app.css', array(), '1.0.0', 'all');
+//Load production scripts and styles
+function alaink_production_scripts()
+{  
+    wp_enqueue_style('customstyle', get_template_directory_uri() . '/public/css/app.css', array(), '1.0.0', 'all');
     wp_enqueue_script('customjs', get_template_directory_uri() . '/public/js/app.js', array(), '1.0.0', true);
-
 }
 
-add_action('wp_enqueue_scripts', 'alaink_scripts');
+if ( "akcom.test" !== $_SERVER['SERVER_NAME'] ) {
+  add_action('wp_enqueue_scripts', 'alaink_production_scripts');
+}
+
+//Load local dev scripts and styles
+function alaink_local_dev_scripts()
+{  
+  wp_enqueue_script('customjs', get_template_directory_uri() . '/public/js/app.js', array(), '1.0.0', true);
+}
+  
+if ( "akcom.test" === $_SERVER['SERVER_NAME'] ) {
+  add_action('wp_enqueue_scripts', 'alaink_local_dev_scripts');
+}
 
 function ak_menus()
 {
