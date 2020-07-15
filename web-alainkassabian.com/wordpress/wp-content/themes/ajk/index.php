@@ -34,19 +34,19 @@
 					<p>Web</p>
 				</li>
 				<li class="col-12 col-md-6 d-flex justify-content-center flex-wrap">
-					<a href="#" class="topics-container">						
+					<a href="category/technology/" class="topics-container">						
 						<img alt="Image for Tech Blog" src="<?php echo get_template_directory_uri(); ?>/images/tech.svg">						
 						<div class="topics-overlay text-center d-flex flex-column justify-content-center">
-							<span>View Blog (Coming Soon)</span>
+							<span>View Blog</span>
 						</div>
 					</a>
 					<p>Technology</p>
 				</li>
 				<li class="col-12 col-md-6 d-flex justify-content-center flex-wrap">
-					<a href="#" class="topics-container">						
+					<a href="category/health/" class="topics-container">						
 						<img alt="Image for Health Blog" src="<?php echo get_template_directory_uri(); ?>/images/health.svg">						
 						<div class="topics-overlay text-center d-flex flex-column justify-content-center">
-							<span>View Blog (Coming Soon)</span>
+							<span>View Blog</span>
 						</div>
 					</a>
 					<p>Health</p>

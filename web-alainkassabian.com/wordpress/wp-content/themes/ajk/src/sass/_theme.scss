@@ -8,6 +8,7 @@ body {
   font-family: "gleegoo";
   color: white !important;
   font-size: 1.5rem !important;
+  background-color: #0e0e0e!important;
 }
 
 nav {
@@ -66,6 +67,10 @@ nav.navbar {
   background-color: #000066 !important;
 }
 
+.content-main{
+  padding-top: 80px;
+}
+
 ///FOOTER
 footer {
   background: #f3f3f3;
@@ -81,13 +86,16 @@ footer {
   li {
     margin: 10px 10px 3px;
   }
-  img {
+  svg {
     height: 50px;
   }
-  .email-icon {
+  .social-email {
     height: 60px;
     position: relative;
     top: -4px;
+  }
+  .social-github{
+    width: 50px;
   }
 }
 
@@ -101,7 +109,7 @@ footer {
 /////////////
 .row-bio {
   margin: 0;
-  padding: 160px 0 0;
+  padding: 80px 0 0;
   .bio_pic_col {
     margin-bottom: 60px;
   }
@@ -190,7 +198,6 @@ footer {
 @media (min-width: 768px) {
   .row-bio {
     margin: 0 0 50px;
-    padding: 160px 0 0;
     .bio_pic_col {
       margin: 0;
     }
@@ -215,6 +222,82 @@ footer {
       li {
         margin: 0 20px;
       }
+    }
+  }
+}
+
+//////////////
+// CATEGORY & SINGLE BLOGS
+/////////////
+.single-post, .category{
+  .content-main{
+    margin-top: 32px;
+    overflow: hidden;
+  }
+  .similar-blogs{
+    ul{
+      list-style: none;
+      padding-left: 0;
+      li{
+        margin-bottom: 20px;
+      }
+      a{
+        color: #f7f7f7;
+        text-decoration: none;
+      }
+      a:hover{
+        color: #007bff;
+      }
+    }
+  }
+  .blog-content{
+    h2{
+      margin-bottom: 20px;
+      margin-top: 30px;
+    }
+    h2:first-of-type{
+      margin-top: 0;
+    }
+    .post-title-main{
+      color: #f7f7f7;
+      text-decoration: none;        
+    }
+    .post-title-main:hover{
+        color: #007bff;
+      }
+    }
+  }
+  footer{
+    margin-top: 20px;
+    background-color: #0e0e0e;
+    border-top: 5px solid #f7f7f7;
+    .social-icons ul{
+      border-color: #f7f7f7;
+      svg path{
+        fill: #f7f7f7;
+      }
+    }
+    p{
+      color: #f7f7f7;
+    }
+  }
+
+//////////////
+// SINGLE BLOGS
+/////////////
+.single-post{
+  .similar-blogs{
+    order:2;
+  }
+  .blog-content{
+    order:1
+  }
+  @media (min-width:768px){
+    .similar-blogs{
+      order:1;
+    }
+    .blog-content{
+      order:2;
     }
   }
 }
